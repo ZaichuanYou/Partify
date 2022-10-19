@@ -73,5 +73,10 @@ print(song_stat)
 for uri in track_uri:
     song_stat = pd.concat([song_stat, pd.DataFrame(sp.audio_features(uri)[0], index=[0])], axis=0, ignore_index=True)
 
+song_stat.drop('track_href', axis=1, inplace=True)
+song_stat.drop('uri', axis=1, inplace=True)
+song_stat.drop('id', axis=1, inplace=True)
+song_stat.drop('type', axis=1, inplace=True)
+song_stat.drop('analysis_url', axis=1, inplace=True)
 print(song_stat)
 song_stat.to_csv("data.csv")
