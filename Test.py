@@ -1,6 +1,7 @@
 import spotipy
 from spotipy import util
 import utils
+import pandas as pd
 
 birdy_uri = 'spotify:artist:2WX2uTcsvV5OnS0inACecP'
 client = utils.getClient()
@@ -42,10 +43,35 @@ while playlists:
         playlists = None
 """
 playlists_u = sp.user_playlists(user=username)
+playlists_uri = []
 while playlists_u:
     for i, playlist in enumerate(playlists_u['items']):
         print("%4d %s %s" % (i + 1 + playlists_u['offset'], playlist['uri'],  playlist['name']))
+        playlists_uri.append(playlist['uri'])
     if playlists_u['next']:
         playlists_u = sp.next(playlists_u)
     else:
         playlists_u = None
+
+track = []
+for a in playlists_uri:
+    track.append(sp.playlist_tracks(a)['items'])
+
+track_uri = []
+for t in track:
+    if not t==None:
+        for a in t:
+            track_uri.append(a["track"]["uri"])
+
+
+song_stat = pd.DataFrame(columns=list(sp.audio_features(track_uri[0])[0].keys()))
+temp = sp.audio_features(track_uri[0])[0]
+print(temp)
+song_stat = pd.concat([pd.DataFrame(temp, index=[0]), song_stat], axis = 0, ignore_index=True)
+print(song_stat)
+
+for uri in track_uri:
+    song_stat = pd.concat([song_stat, pd.DataFrame(sp.audio_features(uri)[0], index=[0])], axis=0, ignore_index=True)
+
+print(song_stat)
+song_stat.to_csv("data.csv")
