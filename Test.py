@@ -1,3 +1,4 @@
+import json
 import spotipy
 from spotipy import util
 import utils
@@ -31,52 +32,14 @@ for track in results['tracks'][:10]:
     print()"""
 
 
-sp = spotipy.Spotify(token)
+sp = utils.getAuth(token)
 
-"""playlists = sp.user_playlists('spotify')
-while playlists:
-    for i, playlist in enumerate(playlists['items']):
-        print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  playlist['name']))
-    if playlists['next']:
-        playlists = sp.next(playlists)
-    else:
-        playlists = None
-"""
+
 playlists_u = sp.user_playlists(user=username)
-playlists_uri = []
-while playlists_u:
-    for i, playlist in enumerate(playlists_u['items']):
-        print("%4d %s %s" % (i + 1 + playlists_u['offset'], playlist['uri'],  playlist['name']))
-        playlists_uri.append(playlist['uri'])
-    if playlists_u['next']:
-        playlists_u = sp.next(playlists_u)
-    else:
-        playlists_u = None
-
-track = []
-for a in playlists_uri:
-    track.append(sp.playlist_tracks(a)['items'])
-
-track_uri = []
-for t in track:
-    if not t==None:
-        for a in t:
-            track_uri.append(a["track"]["uri"])
-
-
-song_stat = pd.DataFrame(columns=list(sp.audio_features(track_uri[0])[0].keys()))
-temp = sp.audio_features(track_uri[0])[0]
-print(temp)
-song_stat = pd.concat([pd.DataFrame(temp, index=[0]), song_stat], axis = 0, ignore_index=True)
-print(song_stat)
-
-for uri in track_uri:
-    song_stat = pd.concat([song_stat, pd.DataFrame(sp.audio_features(uri)[0], index=[0])], axis=0, ignore_index=True)
-
-song_stat.drop('track_href', axis=1, inplace=True)
-song_stat.drop('uri', axis=1, inplace=True)
-song_stat.drop('id', axis=1, inplace=True)
-song_stat.drop('type', axis=1, inplace=True)
-song_stat.drop('analysis_url', axis=1, inplace=True)
-print(song_stat)
-song_stat.to_csv("data.csv")
+temp = utils.getSongInPlaylist(playlists_u['items'][0]['uri'], sp)[0]
+print(temp.keys())
+temp = utils.encodeJson(temp)
+# Writing to sample.json
+with open("test.json", "w") as outfile:
+    outfile.write(temp)
+#utils.getPlayerPlaylistStat(playlists_u, sp)
