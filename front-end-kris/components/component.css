@@ -1,0 +1,10 @@
+.component-container {
+  flex: 0 0 auto;
+  width: 710px;
+  border: 2px dashed rgba(120, 120, 120, 0.4);
+  height: 252px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  background-color: #D9D9D9;
+}
