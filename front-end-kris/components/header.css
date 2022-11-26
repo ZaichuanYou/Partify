@@ -1,48 +1,35 @@
 .header-header {
   top: 0px;
   width: 100%;
-  height: 10em;
+  height: 120px;
   display: flex;
   z-index: 80;
-  position: fixed;
+  position: absolute;
   align-items: flex-start;
   justify-content: center;
-  background-image: linear-gradient(45deg, rgb(86, 84, 87) 0.00%,rgb(86, 59, 89) 51.00%);
+  background-image: linear-gradient(270deg, rgb(189, 195, 199) 0.00%,rgb(80, 44, 78) 100.00%);
 }
 .header-logo {
-  top: 40px;
-  left: 69px;
+  top: 12px;
+  left: 45px;
   width: 84px;
   height: 78px;
   position: absolute;
   object-fit: cover;
 }
-.header-header-border {
-  left: 0px;
-  width: 100%;
-  bottom: -13px;
-  height: 2em;
-  display: flex;
-  z-index: 0;
-  position: absolute;
-  align-items: flex-start;
-  border-color: rgba(120, 120, 120, 0.4);
-  border-style: dashed;
-  border-width: 2px;
-  background-color: var(--dl-color-gray-black);
-}
 .header-site-nav-area {
   top: 19px;
   flex: 0 0 auto;
-  right: 147px;
+  right: 17px;
   width: 117px;
   height: 53px;
   display: flex;
-  opacity: 0.7;
-  position: fixed;
+  opacity: 0.8;
+  z-index: 100;
+  position: absolute;
   align-items: flex-start;
   border-radius: var(--dl-radius-radius-radius4);
-  background-color: #aa9abc;
+  background-color: #989191;
 }
 .header-dropdown {
   top: 0px;
@@ -264,32 +251,12 @@
   border-width: 0px;
   text-decoration: none;
 }
-.header-user {
-  top: 19px;
-  flex: 0 0 auto;
-  right: 18px;
-  width: 117px;
-  height: 53px;
-  display: flex;
-  opacity: 0.7;
-  position: absolute;
-  align-items: center;
-  border-radius: var(--dl-radius-radius-radius4);
-  justify-content: center;
-  background-color: #aa9abc;
-}
-.header-spotify-login-link {
-  color: var(--dl-color-gray-black);
-  font-size: 1em;
-  align-self: center;
-  text-decoration: none;
-}
 .header-page-title {
-  top: 53px;
+  top: 0px;
   flex: 0 0 auto;
-  left: 265px;
-  width: 709px;
-  height: 100px;
+  left: 0%;
+  width: 100%;
+  height: 86px;
   display: flex;
   z-index: 100;
   position: absolute;
@@ -297,13 +264,113 @@
   justify-content: center;
 }
 .header-page-title-text {
-  top: 3px;
-  left: -30px;
+  left: 0px;
   color: var(--dl-color-gray-black);
-  width: 748px;
-  height: 94px;
+  right: 0px;
+  width: 100%;
+  bottom: -17px;
+  height: 100%;
+  position: absolute;
+  font-size: 3em;
+  margin-top: 25px;
+  text-align: center;
+  font-family: Rubik Distressed;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  letter-spacing: 10px;
+}
+.header-header-boarder {
+  flex: 0 0 auto;
+  left: -2px;
+  width: 100%;
+  bottom: -26px;
+  height: 50%;
+  display: flex;
+  z-index: 80;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+}
+.header-wave-img1 {
+  left: -10px;
+  width: 301px;
+  bottom: -2px;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+.header-wave-img2 {
+  left: 272px;
+  width: 301px;
+  bottom: -2px;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+.header-wave-img3 {
+  right: -8px;
+  width: 302px;
+  bottom: -1px;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+.header-wave-img4 {
+  top: -2px;
+  left: 748px;
+  width: 301px;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+.header-wave-img5 {
+  left: 555px;
+  width: 301px;
+  bottom: 0px;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+.header-wave-img6 {
+  right: 65px;
+  width: 301px;
+  bottom: 0px;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+.header-spotify-login {
+  top: 19px;
+  flex: 0 0 auto;
+  right: 166px;
+  width: 117px;
+  height: 53px;
+  display: flex;
+  opacity: 0.8;
+  position: absolute;
+  align-items: flex-start;
+}
+.header-login-button {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 0px;
   position: absolute;
   text-align: center;
+  border-width: 0px;
+  border-radius: var(--dl-radius-radius-radius4);
+  flex-direction: row;
+  background-color: #989191;
 }
+.header-login-button-text {
+  width: 100%;
+  height: 100%;
+  align-self: stretch;
+  border-radius: var(--dl-radius-radius-radius4);
+}
+
 
 

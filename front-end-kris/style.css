@@ -31,8 +31,11 @@
   --dl-radius-radius-radius8: 8px;
   --dl-space-space-fiveunits: 80px;
   --dl-space-space-fourunits: 64px;
+  --dl-color-danger-textcolor: #331742f2;
   --dl-space-space-threeunits: 48px;
+  --dl-color-danger-background_1: #8a8af594;
   --dl-space-space-oneandhalfunits: 24px;
+  --dl-color-danger-container_background: #31314e94;
 }
 .button {
   color: var(--dl-color-gray-black);
@@ -74,8 +77,9 @@
 }
 .teleport-show {
   display: flex !important;
+  transform: none !important;
 }
-.heading {
+.Heading {
   font-size: 32px;
   font-family: Inter;
   font-weight: 700;
@@ -83,7 +87,7 @@
   text-transform: none;
   text-decoration: none;
 }
-.content {
+.Content {
   font-size: 16px;
   font-family: Inter;
   font-weight: 400;
@@ -91,7 +95,7 @@
   text-transform: none;
   text-decoration: none;
 }
-.partifyTitle {
+.Partify\ Title {
   font-size: 16px;
   font-family: Inter;
   font-weight: 400;
