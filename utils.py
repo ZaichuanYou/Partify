@@ -1,6 +1,8 @@
+from flask import url_for
 import spotipy
 from spotipy import util
 from spotipy.oauth2 import SpotifyClientCredentials
+from spotipy.oauth2 import SpotifyOAuth
 import pandas as pd
 import pyqrcode
 from pyqrcode import QRCode
@@ -12,6 +14,14 @@ def getToken(username, scope):
 
 def getClient():
     return SpotifyClientCredentials(client_id="2c33c1c77b5346438eae177739954110", client_secret="5fd21bbeef534e91ab441448b96493ee")
+
+def create_spotify_oauth():
+    return SpotifyOAuth(
+            client_id="2c33c1c77b5346438eae177739954110",
+            client_secret="5fd21bbeef534e91ab441448b96493ee",
+            redirect_uri=url_for('authorize', _external=True),
+            scope="user-library-read")
+    
 
 def getAuth(token):
     Auth = spotipy.Spotify(token)
