@@ -59,6 +59,7 @@ def get_user_playlist(Auth):
         temp_dict = {}
         temp_dict['images'] = playlist['images']
         temp_dict['description'] = playlist['description']
+        temp_dict['id'] = playlist['id']
         result[playlist['name']] = temp_dict
     
     return result

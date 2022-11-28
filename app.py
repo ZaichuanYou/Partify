@@ -52,6 +52,16 @@ def getUserPlaylist():
     Auth = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
     return utils.get_user_playlist(Auth)
 
+@app.route('/getSongs/')
+def getSongs():
+    session['token_info'], authorized = get_token()
+    session.modified = True
+    if not authorized:
+        return redirect('/')
+    Auth = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
+    playlist = request.args['playlist']
+    return str(utils.get_SongURI_In_Playlist(playlist, Auth))
+
 # Checks to see if token is valid and gets a new token if not
 def get_token():
     token_valid = False
