@@ -93,15 +93,18 @@
   height: 100%;
   position: absolute;
 }
-.play-bar-root-class-name {
+
+
+.play-bar-root-class-name3 {
   top: 0px;
   left: 0px;
   position: static;
 }
 
 
-.play-bar-root-class-name3 {
-  top: 0px;
+
+.play-bar-root-class-name7 {
   left: 0px;
+  bottom: 0px;
   position: static;
 }
