@@ -586,6 +586,7 @@ html, body {
   align-items: flex-start;
   justify-content: center;
   font-family: Rubik;
+  color: black;
 }
 .home-welcome-text-container {
   top: 100px;
@@ -641,6 +642,7 @@ html, body {
   padding: 5%;
   border-top: 2px solid rgba(0, 0, 0, 0.527);
 }
+/* The next two rules are for the slidshow container and its animation */ 
 #home-slideshow-container {
   margin-left: 3%;
   height: fit-content;

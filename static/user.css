@@ -562,7 +562,7 @@
   height: 100%;
   display: flex;
   overflow: auto;
-  min-height: 1300px;
+  min-height: 1600px;
   align-items: center;
   flex-direction: column;
   background-image: linear-gradient(270deg, rgb(189, 195, 199) 0.00%,rgba(80, 44, 78, 0.7) 100.00%);
@@ -720,38 +720,7 @@ html, body {
   color: rgba(51, 23, 66, 0.95);
   font-size: 1.5em;
 }
-.user-recommend-container {
-  top: 0px;
-  flex: 0 0 auto;
-  right: 13%;
-  width: 20%;
-  height: 100%;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  border-radius: var(--dl-radius-radius-round);
-  justify-content: flex-start;
-}
-.user-recommend-button {
-  width: 100%;
-  height: 100%;
-  padding: 0px;
-  position: relative;
-  box-shadow: 5px 5px 10px 0px #343030;
-  text-align: center;
-  border-radius: 70%;
-  background-color: rgba(49, 49, 78, 0.5803921568627451);
-}
-.user-recommend-text {
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  width: 80%;
-  bottom: 0px;
-  height: 50%;
-  margin: auto;
-  position: absolute;
-}
+
 .user-group-playlists {
   top: 402px;
   right: 0px;
@@ -818,6 +787,190 @@ html, body {
   margin-bottom: 1em;
   background-color: var(--dl-color-danger-container_background);
 }
+/* Below are the rules of the recommendations' area */
+.user-recommendations{
+  width: 100%;
+  height: 35%;
+  top: 1250px;
+  border: 2px solid black;
+  background-color: rgba(49, 49, 78, 0.5803921568627451) ;
+  align-self: flex-start;
+  position:absolute;
+}
+.user-recommend-container {
+  top: 2%;
+  flex: 0 0 auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  border-radius: var(--dl-radius-radius-round);
+  justify-content: flex-start;
+}
+.user-recommend-button {
+  width: 7em;
+  height: 35%;
+  margin-left: 5%;
+  position: absolute;
+  box-shadow: 5px 5px 10px 0px #343030;
+  text-align: center;
+  border-radius: 70%;
+  background-color: rgba(249, 249, 250, 0.425);
+}
+.user-recommend-button:hover {
+  background-color: white;
+}
+.user-recommend-text {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 80%;
+  bottom: 0px;
+  height: 50%;
+  margin: auto;
+  position: absolute;
+}
+.user-recommendations-results{
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  height: 60%;
+}
+.user-textinput {
+  right: 14em;
+  bottom: 0px;
+  height: 1.5em;
+  position: absolute;
+  margin-right: 13%;
+  border-radius: var(--dl-radius-radius-radius8);
+}
+#user-recommended-song {
+  top: 5%;
+  flex: 0 0 auto;
+  right: 5%;
+  width: 10%;
+  height: 65%;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  border-color: var(--dl-color-gray-black);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: var(--dl-radius-radius-radius8);
+  background-color: var(--dl-color-danger-container_background);
+}
+#user-add-recommend-song-button {
+  right: 7%;
+  bottom: 5%;
+  position: absolute;
+  background-color: #989191;
+  border-radius: 6px;
+}
+#user-add-recommend-song-button:hover {
+  background-color: white;
+}
+#user-recommended-song2 {
+  top: 5%;
+  flex: 0 0 auto;
+  right: 25%;
+  width: 10%;
+  height: 65%;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  border-color: var(--dl-color-gray-black);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: var(--dl-radius-radius-radius8);
+  background-color: var(--dl-color-danger-container_background);
+}
+#user-add-recommend-song-button2 {
+  right: 27%;
+  bottom: 5%;
+  position: absolute;
+  background-color: #989191;
+  border-radius: 6px;
+}
+#user-add-recommend-song-button2:hover {
+  background-color: white;
+}
+#user-recommended-song3 {
+  top: 5%;
+  flex: 0 0 auto;
+  right: 45%;
+  width: 10%;
+  height: 65%;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  border-color: var(--dl-color-gray-black);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: var(--dl-radius-radius-radius8);
+  background-color: var(--dl-color-danger-container_background);
+}
+#user-add-recommend-song-button3 {
+  right: 47%;
+  bottom: 5%;
+  position: absolute;
+  background-color: #989191;
+  border-radius: 6px;
+}
+#user-add-recommend-song-button3:hover {
+  background-color: white;
+}
+#user-recommended-song4 {
+  top: 5%;
+  flex: 0 0 auto;
+  right: 65%;
+  width: 10%;
+  height: 65%;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  border-color: var(--dl-color-gray-black);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: var(--dl-radius-radius-radius8);
+  background-color: var(--dl-color-danger-container_background);
+}
+#user-add-recommend-song-button4 {
+  right: 67%;
+  bottom: 5%;
+  position: absolute;
+  background-color: #989191;
+  border-radius: 6px;
+}
+#user-add-recommend-song-button4:hover {
+  background-color: white;
+}
+#user-recommended-song5 {
+  top: 5%;
+  flex: 0 0 auto;
+  left: 5%;
+  width: 10%;
+  height: 65%;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  border-color: var(--dl-color-gray-black);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: var(--dl-radius-radius-radius8);
+  background-color: var(--dl-color-danger-container_background);
+}
+#user-add-recommend-song-button5 {
+  left: 7%;
+  bottom: 5%;
+  position: absolute;
+  background-color: #989191;
+  border-radius: 6px;
+}
+#user-add-recommend-song-button5:hover {
+  background-color: white;
+}
+
 .user-footer {
   flex: 0 0 auto;
   left: 0px;

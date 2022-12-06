@@ -513,6 +513,7 @@ html, body {
   background-color:  #31314e94;
   padding-top: 1%;
   box-shadow: 5px 5px 10px 0px #403939;
+  color: black;
 }
 .group-name {
   top: 170px;
@@ -537,8 +538,9 @@ html, body {
   margin-left: 5em;
   border-radius: var(--dl-radius-radius-radius8);
   border: 2px solid rgba(0, 0, 0, 0.527);
-  background-color: rgba(49, 49, 78, 0.5803921568627451);
+  background-color: #31314e94;
   overflow-y: scroll;
+  color: black;
 }
 #group-member-search {
   width: 100%;
@@ -593,7 +595,7 @@ html, body {
   margin-right: 5em;
   border-radius: var(--dl-radius-radius-radius8);
   margin-bottom: 0em;
-  background-color: rgba(49, 49, 78, 0.5803921568627451);
+  background-color: #31314e94;
 }
 .group-members-title {
   top: 900px;
