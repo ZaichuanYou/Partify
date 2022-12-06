@@ -50,6 +50,33 @@
         }
     </style>
     <link rel="stylesheet" href="./style.css" />
+    <!-- These functions are used to turn on and off the overlays-->
+    <script>
+      function overlay1On() {
+        document.getElementById("overlay1").style.display = "block";
+      }
+      function overlay2On() {
+        document.getElementById("overlay2").style.display = "block";
+      }
+      function overlay3On() {
+        document.getElementById("overlay3").style.display = "block";
+      }
+      function overlay4On() {
+        document.getElementById("overlay4").style.display = "block";
+      }
+      function overlay1Off() {
+        document.getElementById("overlay1").style.display = "none";
+      }
+      function overlay2Off() {
+        document.getElementById("overlay2").style.display = "none";
+      }
+      function overlay3Off() {
+        document.getElementById("overlay3").style.display = "none";
+      }
+      function overlay4Off() {
+        document.getElementById("overlay4").style.display = "none";
+      }
+    </script>
   </head>
   <body>
     <div>
@@ -156,32 +183,32 @@
             <div class="header-header-boarder">
               <img
                 alt="image"
-                src="/playground_assets/sound-1781570.svg"
+                src="../Images/sound-1781570.svg"
                 class="header-wave-img1"
               />
               <img
                 alt="image"
-                src="/playground_assets/sound-1781570.svg"
+                src="../Images/sound-1781570.svg"
                 class="header-wave-img2"
               />
               <img
                 alt="image"
-                src="/playground_assets/sound-1781570.svg"
+                src="../Images/sound-1781570.svg"
                 class="header-wave-img3"
               />
               <img
                 alt="image"
-                src="/playground_assets/sound-1781570.svg"
+                src="../Images/sound-1781570.svg"
                 class="header-wave-img4"
               />
               <img
                 alt="image"
-                src="/playground_assets/sound-1781570.svg"
+                src="../Images/sound-1781570.svg"
                 class="header-wave-img5"
               />
               <img
                 alt="image"
-                src="/playground_assets/sound-1781570.svg"
+                src="../Images/sound-1781570.svg"
                 class="header-wave-img6"
               />
             </div>
@@ -212,23 +239,25 @@
                 </span>
               </div>
             </div>
+            <!--Section for the first piece of data-->
             <div class="data-data1">
-              <img
-                alt="image"
-                src="https://play.teleporthq.io/static/svg/default-img.svg"
-                class="data-data1image"
-              />
-              <span class="data-data1short-text">
+                <img onclick="overlay1On()"
+                  alt="data image 1"
+                  src="https://play.teleporthq.io/static/svg/default-img.svg"
+                  class="data-data1image"
+                />
+                <span class="data-data1short-text">
                 <span>Short Description of Data 1</span>
                 <br />
                 <br />
-              </span>
+                </span>
             </div>
+             <!--Section for the second piece of data-->
             <div class="data-data2header">
               <h1 class="data-data2header-text">Data 2 Title</h1>
             </div>
             <div class="data-data2">
-              <img
+              <img onclick="overlay2On()"
                 alt="image"
                 src="https://play.teleporthq.io/static/svg/default-img.svg"
                 class="data-data2image"
@@ -239,11 +268,12 @@
                 <br />
               </span>
             </div>
+             <!--Section for the third piece of data-->
             <div class="data-data3header">
               <h1 class="data-data3header-text">Data 3 Title</h1>
             </div>
             <div class="data-data3">
-              <img
+              <img onclick="overlay3On()"
                 alt="image"
                 src="https://play.teleporthq.io/static/svg/default-img.svg"
                 class="data-data3image"
@@ -254,11 +284,12 @@
                 <br />
               </span>
             </div>
+             <!--Section for the fourth piece of data-->
             <div class="data-data4header">
               <h1 class="data-data4header-text">Data 4 Title</h1>
             </div>
             <div class="data-data4">
-              <img
+              <img onclick="overlay4On()"
                 alt="image"
                 src="https://play.teleporthq.io/static/svg/default-img.svg"
                 class="data-data4image"
@@ -269,7 +300,52 @@
                 <br />
               </span>
             </div>
+            <!--This is for the overlay of the first data image-->
+            <div id="overlay1" onclick="overlay1Off()"> 
+              <img
+                alt="overlay-data-image"
+                src="https://play.teleporthq.io/static/svg/default-img.svg"
+                id="overlayimage1"
+              />
+              <p id="overlaytext1">
+                Description of Data 1 
+              </p>
+            </div>
+            <!--This is for the overlay of the second data image-->
+            <div id="overlay2" onclick="overlay2Off()"> 
+              <img
+                alt="overlay-data-image2"
+                src="https://play.teleporthq.io/static/svg/default-img.svg"
+                id="overlayimage2"
+              />
+              <p id="overlaytext2">
+                Description of Data 2 
+              </p>
+            </div>
+             <!--This is for the overlay of the third data image-->
+             <div id="overlay3" onclick="overlay3Off()"> 
+              <img
+                alt="overlay-data-image3"
+                src="https://play.teleporthq.io/static/svg/default-img.svg"
+                id="overlayimage3"
+              />
+              <p id="overlaytext3">
+                Description of Data 3 
+              </p>
+            </div>
+             <!--This is for the overlay of the four data image-->
+             <div id="overlay4" onclick="overlay4Off()"> 
+              <img
+                alt="overlay-data-image4"
+                src="https://play.teleporthq.io/static/svg/default-img.svg"
+                id="overlayimage4"
+              />
+              <p id="overlaytext4">
+                Description of Data 4 
+              </p>
+            </div>
           </div>
+          <!--Below are the containers for the footer/playbar-->
           <footer class="data-footer">
             <div class="play-bar-container play-bar-root-class-name6">
               <div class="play-bar-next-button-container">

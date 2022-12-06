@@ -50,6 +50,28 @@
         }
     </style>
     <link rel="stylesheet" href="./style.css" />
+    <!--This function is used for the automatic slideshow-->
+    <!--
+    <script>
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        let index;
+        let homeSlides = document.getElementsByClassName("home_slides");
+        for (index = 0; index < homeSlides.length; index++) {
+          homeSlides[index].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > homeSlides.length) {
+          slideIndex = 1;
+        }
+        homeSlides[slideIndex = slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 5000);
+      }
+    </script>
+  -->
+
   </head>
   <body>
     <div>
@@ -138,32 +160,32 @@
           <div class="header-header-boarder">
             <img
               alt="image"
-              src="Images/sound-1781570.svg"
+              src="../Images/sound-1781570.svg"
               class="header-wave-img1"
             />
             <img
               alt="image"
-              src="Images/sound-1781570.svg"
+              src="../Images/sound-1781570.svg"
               class="header-wave-img2"
             />
             <img
               alt="image"
-              src="Images/sound-1781570.svg"
+              src="../Images/sound-1781570.svg"
               class="header-wave-img3"
             />
             <img
               alt="image"
-              src="Images/sound-1781570.svg"
+              src="../Images/sound-1781570.svg"
               class="header-wave-img4"
             />
             <img
               alt="image"
-              src="Images/sound-1781570.svg"
+              src="../Images/sound-1781570.svg"
               class="header-wave-img5"
             />
             <img
               alt="image"
-              src="Images/sound-1781570.svg"
+              src="../Images/sound-1781570.svg"
               class="header-wave-img6"
             />
           </div>
@@ -181,10 +203,11 @@
             </a>
           </div>
         </div>
+        <!-- The section for the main elements is below-->
         <div class="home-main">
           <div class="home-welcome-text-container">
             <span class="home-welcome-text">
-              <span>Welcome to Partify&nbsp; !</span>
+              <span>Welcome to Partify&nbsp;!</span>
               <br />
               <br />
             </span>
@@ -195,6 +218,7 @@
               occasion.
             </span>
             <span class="home-welcome-text-list">
+              <br />
               <span>
                 &nbsp; -&nbsp; &nbsp; Create your own group playlist&nbsp;
               </span>
@@ -210,16 +234,35 @@
               <br />
               <span>
                 &nbsp; -&nbsp; &nbsp; Allow your friends to join you and edit
-                your playlist&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; using a custom QR code
+                your playlist using a custom QR code
               </span>
               <br />
               <br />
+              <span> 
+                &nbsp; -&nbsp; &nbsp; Whether you are having a small gathering or 
+                a large party, Partify is here to cater to your needs
+
+              </span>
               <br />
             </span>
           </div>
-          <div class="home-slideshow-container"></div>
+          <!-- Containter for the slideshow-->
+          <div id="home-slideshow-container">
+            <div>
+              <img src="../Images/small_party.jpg">
+            </div>   
+            <div>
+              <img src="../Images/dj_party.jpg">
+            </div> 
+            <div>
+              <img src="../Images/big_party.jpg">
+            </div> 
+            <div>
+              <img src="../Images/dj2_party.jpg">
+            </div> 
+          </div>
         </div>
+        <!-- Container of the footer/playbar-->
         <footer class="home-footer">
           <div class="play-bar-container play-bar-root-class-name4">
             <div class="play-bar-next-button-container">

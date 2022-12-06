@@ -50,6 +50,29 @@
         }
     </style>
     <link rel="stylesheet" href="./style.css" />
+    <!--This function is used to search through the group member list-->
+    <script>
+      function memberSearchFunction() {
+        var Search_Input, filter, table, tr, td, index, text_Value;
+        input = document.getElementById("group-member-search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("group-member-table");
+        tr = table.getElementsByTagName("tr");
+
+        for (index = 0; index < tr.length; index++) {
+          td = tr[index].getElementsByTagName("td")[0];
+          if (td) {
+            text_Value = td.textContent || td.innerText;
+            if (text_Value.toUpperCase().indexOf(filter) > -1) {
+              tr[index].style.display = "";
+            }
+            else {
+              tr[index].style.display = "None";
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <div>
@@ -156,7 +179,7 @@
             <div class="header-header-boarder">
               <img
                 alt="image"
-                src="../../Images/sound-1781570.svg"
+                src="../Images/sound-1781570.svg"
                 class="header-wave-img1"
               />
               <img
@@ -199,50 +222,47 @@
               </a>
             </div>
           </div>
+          <!--Section for the main elements of the page-->
           <div class="group-main">
             <div class="group-page-title">
               <h1 class="group-page-title-text">Group</h1>
             </div>
-            <div class="group-group-name">
-              <h1 class="group-group-name-text">Group Name</h1>
+            <div class="group-members">
+              <input type="text" 
+              id="group-member-search" 
+              onkeyup="memberSearchFunction()" 
+              placeholder="Search for group members...">
+              </input>
+              <table id="group-member-table">
+                <tr class="header">
+                  <th style="width:100%";>Name</th>
+                </tr>
+                <!--The group member's names go here-->
+                <tr>
+                  <td>John Smith</td> 
+                </tr>
+                <tr>
+                  <td>Joe Baker</td> 
+                </tr>
+                <tr>
+                  <td>Alice Smith</td>
+                </tr>
+              </table>
             </div>
-            <div class="group-group-members">
-              <ul class="group-group-member-list list">
-                <li class="group-list-item list-item">
-                  <span class="group-name">Example Name</span>
-                </li>
-                <li class="group-li list-item"><span>Example Name</span></li>
-                <li class="group-li1 list-item"><span>Example Name</span></li>
-              </ul>
+            <div class="group-playlist"></div>
+            <div class="group-members-title">
+              <span class="group-members-title-text">Group Members</span>
             </div>
-            <div class="group-group-playlist"></div>
-            <div class="group-group-members-title">
-              <input
-                type="text"
-                placeholder="Search "
-                class="group-group-search-input input"
-              />
-              <span class="group-group-members-title-text">Group Members</span>
-            </div>
-            <div class="group-group-playlist-title">
-              <span class="group-group-playlist-title-text">
-                Group Playlist
-              </span>
-              <div class="group-recommend-container">
-                <button class="group-recommend-button button">
-                  <span class="group-recommend-text">
-                    <span>Recommend Me A Song&nbsp;</span>
-                    <br />
-                    <br />
-                  </span>
-                </button>
-              </div>
+            <div class="group-playlist-title">
+              <span class="group-playlist-title-text">Group Playlist</span>
+              
               <input
                 type="text"
                 placeholder="Search Playlist"
                 class="group-textinput input"
               />
             </div>
+            <!--Containers for the QR code-->
             <div class="group-q-r-code"></div>
             <div class="group-q-r-code-text-container">
               <span class="group-q-r-code-text">
@@ -261,11 +281,37 @@
               <input
                 type="text"
                 placeholder="Search "
-                class="group-group-search-input1 input"
+                class="group-search-input1 input"
               />
               <span class="group-songs">Add New Songs&nbsp;</span>
             </div>
-          </div>
+            <!--Containers for the recommendations-->
+            <div class="group-recommendations">
+              <div class="group-recommend-container">
+                <button class="group-recommend-button button">
+                  <span class="group-recommend-text">
+                    <span>Recommend Me A Song </span>
+                    <br />
+                    <br />
+                  </span>
+                </button>
+              </div>
+              <!--Sections for the individual recommendation results-->
+              <div class="group-recommendations-results">
+                <div id="group-recommended-song"></div>
+                <button id="group-add-recommend-song-button">Add Song</button>
+                <div id="group-recommended-song2"></div>
+                <button id="group-add-recommend-song-button2">Add Song</button>
+                <div id="group-recommended-song3"></div>
+                <button id="group-add-recommend-song-button3">Add Song</button>
+                <div id="group-recommended-song4"></div>
+                <button id="group-add-recommend-song-button4">Add Song</button>
+                <div id="group-recommended-song5"></div>
+                <button id="group-add-recommend-song-button5">Add Song</button>
+              </div>  
+            </div>
+           </div>
+           <!--Containers for the footer/playbar-->
           <footer class="group-footer">
             <div class="play-bar-container play-bar-root-class-name">
               <div class="play-bar-next-button-container">
