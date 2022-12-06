@@ -49,11 +49,11 @@
           transform: rotate(90deg);
         }
     </style>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../static/style.css" />
   </head>
   <body>
     <div>
-      <link href="./user.css" rel="stylesheet" />
+      <link href="../static/user.css" rel="stylesheet" />
 
       <div class="user-container">
         <div class="user-page-container">
@@ -156,39 +156,38 @@
             <div class="header-header-boarder">
               <img
                 alt="image"
-                src="/playground_assets/sound-1781570.svg"
+                src="../static/public/playground_assets/sound-1781570.svg"
                 class="header-wave-img1"
               />
               <img
                 alt="image"
-                src="/playground_assets/sound-1781570.svg"
+                src="../static/public/playground_assets/sound-1781570.svg"
                 class="header-wave-img2"
               />
               <img
                 alt="image"
-                src="/playground_assets/sound-1781570.svg"
+                src="../static/public/playground_assets/sound-1781570.svg"
                 class="header-wave-img3"
               />
               <img
                 alt="image"
-                src="/playground_assets/sound-1781570.svg"
+                src="../static/public/playground_assets/sound-1781570.svg"
                 class="header-wave-img4"
               />
               <img
                 alt="image"
-                src="/playground_assets/sound-1781570.svg"
+                src="../static/public/playground_assets/sound-1781570.svg"
                 class="header-wave-img5"
               />
               <img
                 alt="image"
-                src="/playground_assets/sound-1781570.svg"
+                src="../static/public/playground_assets/sound-1781570.svg"
                 class="header-wave-img6"
               />
             </div>
             <div class="header-spotify-login">
               <a
                 href="https://www.spotify.com/us/account/overview/"
-                target="_blank"
                 rel="noreferrer noopener"
                 class="header-login-button button"
               >
@@ -201,15 +200,15 @@
           </div>
           <div class="user-main">
             <div class="user-user-page-title">
-              <h1 class="user-user-page-title-text">Welcome, User_Name!</h1>
+              <h1 class="user-user-page-title-text">Welcome, {{username}} !</h1>
             </div>
             <div class="user-group-members">
               <ul class="user-group-member-list list">
+                {% for name in playlistNames %}
                 <li class="user-list-item list-item">
-                  <span class="user-name">Example Name</span>
+                  <a href="" class="button"><span class="user-name">{{ name }}</span></a>
                 </li>
-                <li class="user-li list-item"><span>Example Name</span></li>
-                <li class="user-li1 list-item"><span>Example Name</span></li>
+                {% endfor %}
               </ul>
             </div>
             <div class="user-personal-p-laylists">

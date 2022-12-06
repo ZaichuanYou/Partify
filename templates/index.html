@@ -49,11 +49,11 @@
           transform: rotate(90deg);
         }
     </style>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../static/style.css" />
   </head>
   <body>
     <div>
-      <link href="./home.css" rel="stylesheet" />
+      <link href="../static/home.css" rel="stylesheet" />
 
       <div class="home-container">
         <div id="Header" class="header-header header-root-class-name3">
@@ -84,7 +84,7 @@
                     data-thq="thq-dropdown-toggle"
                     class="header-dropdown-toggle1"
                   >
-                    <a href="index.html" class="header-home-button button">
+                    <a href="{{ url_for('home') }}" class="header-home-button button">
                       <span>Home</span>
                     </a>
                   </div>
@@ -94,7 +94,7 @@
                     data-thq="thq-dropdown-toggle"
                     class="header-dropdown-toggle2"
                   >
-                    <a href="user.html" class="header-user-button button">
+                    <a href="{{ url_for('getUserProfile') }}" class="header-user-button button">
                       <span>User</span>
                     </a>
                   </div>
@@ -138,39 +138,38 @@
           <div class="header-header-boarder">
             <img
               alt="image"
-              src="Images/sound-1781570.svg"
+              src="../static/Images/sound-1781570.svg"
               class="header-wave-img1"
             />
             <img
               alt="image"
-              src="Images/sound-1781570.svg"
+              src="../static/Images/sound-1781570.svg"
               class="header-wave-img2"
             />
             <img
               alt="image"
-              src="Images/sound-1781570.svg"
+              src="../static/Images/sound-1781570.svg"
               class="header-wave-img3"
             />
             <img
               alt="image"
-              src="Images/sound-1781570.svg"
+              src="../static/Images/sound-1781570.svg"
               class="header-wave-img4"
             />
             <img
               alt="image"
-              src="Images/sound-1781570.svg"
+              src="../static/Images/sound-1781570.svg"
               class="header-wave-img5"
             />
             <img
               alt="image"
-              src="Images/sound-1781570.svg"
+              src="../static/Images/sound-1781570.svg"
               class="header-wave-img6"
             />
           </div>
           <div class="header-spotify-login">
             <a
-              href="https://www.spotify.com/us/account/overview/"
-              target="_blank"
+              href="{{ url_for('login') }}"
               rel="noreferrer noopener"
               class="header-login-button button"
             >

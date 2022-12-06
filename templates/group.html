@@ -49,11 +49,13 @@
           transform: rotate(90deg);
         }
     </style>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../static/style.css" />
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   </head>
   <body>
     <div>
-      <link href="./group.css" rel="stylesheet" />
+      <link href="../static/group.css" rel="stylesheet" />
 
       <div class="group-container">
         <div class="group-page-container">
@@ -156,32 +158,32 @@
             <div class="header-header-boarder">
               <img
                 alt="image"
-                src="../../Images/sound-1781570.svg"
+                src="../static/Images/sound-1781570.svg"
                 class="header-wave-img1"
               />
               <img
                 alt="image"
-                src="../Images/sound-1781570.svg"
+                src="../static/Images/sound-1781570.svg"
                 class="header-wave-img2"
               />
               <img
                 alt="image"
-                src="../Images/sound-1781570.svg"
+                src="../static/Images/sound-1781570.svg"
                 class="header-wave-img3"
               />
               <img
                 alt="image"
-                src="../Images/sound-1781570.svg"
+                src="../static/Images/sound-1781570.svg"
                 class="header-wave-img4"
               />
               <img
                 alt="image"
-                src="../Images/sound-1781570.svg"
+                src="../static/Images/sound-1781570.svg"
                 class="header-wave-img5"
               />
               <img
                 alt="image"
-                src="../Images/sound-1781570.svg"
+                src="../static/Images/sound-1781570.svg"
                 class="header-wave-img6"
               />
             </div>
@@ -215,7 +217,14 @@
                 <li class="group-li1 list-item"><span>Example Name</span></li>
               </ul>
             </div>
-            <div class="group-group-playlist"></div>
+            <div class="group-group-playlist">
+              <ul>
+                {% for song in songsInPlaylist %}
+                  <li>{{ song['name'] }}</li>
+                  <a href="" class="button">Delete</a>
+                {% endfor %}
+              </ul>
+            </div>
             <div class="group-group-members-title">
               <input
                 type="text"
@@ -256,13 +265,19 @@
                 ></path>
               </svg>
             </div>
-            <div class="group-container1"></div>
+            <div class="group-container1">
+              <ul id="listOfSongs"></ul>
+            </div>
             <div class="group-songs-title">
-              <input
-                type="text"
-                placeholder="Search "
-                class="group-group-search-input1 input"
-              />
+              <form method="post">
+                <input
+                  type="text"
+                  placeholder="Search "
+                  class="group-group-search-input1 input"
+                  id = "newSongName"
+                  onkeyup = "getSongsFromKey()"
+                />
+              </form>
               <span class="group-songs">Add New Songs&nbsp;</span>
             </div>
           </div>
@@ -325,5 +340,42 @@
         </div>
       </div>
     </div>
+
+    <script>
+      function getSongsFromKey() {
+        let newSongName = document.getElementById("newSongName").value;
+        let listOfSongs = document.getElementById('listOfSongs')
+        listOfSongs.innerHTML = ''
+        $.ajax({
+          url: "/groupPage",
+          type: "POST",
+          // contentType: "application/json",
+          data: {
+            newSongName: newSongName
+          },
+          success: function(songResults) {
+            console.log('Results')
+            console.log(songResults)
+            for (var key in songResults) {
+              console.log(songResults[key]['name'])
+              const node = document.createElement("li");
+              const textnode = document.createTextNode(songResults[key]['name']);
+              const nodeAdd = document.createElement('a')
+              nodeAdd.className = 'button'
+              nodeAdd.setAttribute('href', '')
+              nodeAdd.textContent = 'Add'
+              nodeAdd.setAttribute('onclick', 'addToPlaylist(songResults[key])')
+              node.appendChild(textnode);
+              listOfSongs.appendChild(node);
+              listOfSongs.appendChild(nodeAdd)
+            }
+        }
+        });
+      }
+
+      function addToPlaylist() {
+
+      }
+      </script>
   </body>
 </html>

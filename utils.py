@@ -20,7 +20,8 @@ def create_spotify_oauth():
             client_id="2c33c1c77b5346438eae177739954110",
             client_secret="5fd21bbeef534e91ab441448b96493ee",
             redirect_uri=url_for('authorize', _external=True),
-            scope="user-library-read")
+            # scope="user-library-read"
+            scope="user-library-read playlist-read-private playlist-modify-private playlist-modify-public user-read-private user-read-email")
     
 
 def getAuth(token):
