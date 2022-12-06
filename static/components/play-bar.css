@@ -4,10 +4,11 @@
   display: flex;
   z-index: 80;
   position: fixed;
-  align-items: flex-end;
+  align-items: flex-start;
   flex-direction: column;
   justify-content: center;
   background-color: #989191;
+  left: 0;
 }
 .play-bar-next-button-container {
   top: -1px;

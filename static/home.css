@@ -32,6 +32,9 @@
   border-radius: var(--dl-radius-radius-radius4);
   background-color: #989191;
 }
+.header-site-nav-text:hover {
+  background-color: white;
+}
 .header-dropdown {
   top: 0px;
   left: 0px;
@@ -354,6 +357,8 @@
   position: absolute;
   box-shadow: 5px 5px 10px 0px #3e3939;
   align-items: flex-start;
+  background-color: #989191;
+  font-weight: 500;
 }
 .header-login-button {
   top: 0px;
@@ -368,7 +373,10 @@
   border-radius: var(--dl-radius-radius-radius4);
   flex-direction: row;
   text-decoration: none;
-  background-color: #989191;
+  background-color: transparent;
+}
+.header-login-button:hover {
+  background-color: white;
 }
 .header-login-button-text {
   width: 100%;
@@ -376,12 +384,6 @@
   align-self: stretch;
   border-radius: var(--dl-radius-radius-radius4);
 }
-
-
-
-
-
-
 .play-bar-container {
   width: 100%;
   height: 49px;
@@ -392,6 +394,7 @@
   flex-direction: column;
   justify-content: center;
   background-color: #989191;
+  left: 0px;
 }
 .play-bar-next-button-container {
   top: -1px;
@@ -556,42 +559,49 @@
   right: 2px;
   bottom: 5px;
 }
-
+/* This marks the end of the header and th beginning of the main page */
 .home-container {
   width: 100%;
   display: flex;
   overflow: auto;
-  min-height: 100vh;
+  min-height: 1000px;
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
   background-image: linear-gradient(270deg, rgb(189, 195, 199) 0.00%,rgba(80, 44, 78, 0.7) 100.00%);
+}
+/* This one hides the horizontal scroll bar  */
+html, body {
+  overflow-x: hidden;
 }
 .home-main {
   top: 120px;
   flex: 0 0 auto;
   left: 0px;
   width: 100%;
-  height: 90%;
+  height: fit-content;
   display: flex;
   z-index: 80;
   position: absolute;
   align-items: flex-start;
   justify-content: center;
+  font-family: Rubik;
 }
 .home-welcome-text-container {
-  top: 64px;
+  top: 100px;
   flex: 0 0 auto;
-  left: 0px;
+  left: 37.5%;
+  right: 37.5%;
   width: 25%;
   height: 5em;
   display: flex;
   position: absolute;
   box-shadow: 5px 5px 10px 0px #403939;
   align-items: flex-start;
-  margin-left: 3%;
+  padding-left: 1%;
   border-radius: var(--dl-radius-radius-radius8);
   background-color: var(--dl-color-danger-container_background);
+  border: 2px solid rgba(0, 0, 0, 0.527)
 }
 .home-welcome-text {
   width: 100%;
@@ -601,11 +611,11 @@
   margin-left: 0.3em;
 }
 .home-welcome-text-container2 {
-  top: 128px;
+  top: 300px;
   flex: 0 0 auto;
   right: 0px;
   width: 45%;
-  height: 35em;
+  height: fit-content;
   display: flex;
   position: absolute;
   box-shadow: 5px 5px 10px 0px #3a3333;
@@ -615,6 +625,7 @@
   flex-direction: column;
   justify-content: flex-start;
   background-color: var(--dl-color-danger-container_background);
+  border: 2px solid rgba(0, 0, 0, 0.527)
 }
 .home-welcome-text2 {
   width: 100%;
@@ -625,21 +636,44 @@
 }
 .home-welcome-text-list {
   width: 100%;
-  height: 100%;
+  height: fit-content;
   font-size: 1.2em;
+  padding: 5%;
+  border-top: 2px solid rgba(0, 0, 0, 0.527);
 }
-.home-slideshow-container {
-  top: 188px;
-  flex: 0 0 auto;
-  left: 0px;
-  width: 35em;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
-  height: 35em;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
+#home-slideshow-container {
   margin-left: 3%;
+  height: fit-content;
+  width: 45%;
+  top: 300px;
+  left: 0px;
+  position: absolute;
+  box-shadow: 5px 5px 10px 0px #3a3333;
 }
+
+#home-slideshow-container > * {
+  animation: 21s slideAnimation infinite linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.0;
+}
+/* The next two css rules control the animation for the slideshow
+   by altering the opactiy of the images */
+@keyframes slideAnimation {
+  0% {opacity: 0.0;}
+  4% {opacity: 1.0;}
+  33.33% {opacity: 1.0;}
+  37.33% {opacity: 0.0;}
+  100% {opacity: 0.0;}
+}
+
+#home-slideshow-container > *:nth-child(1) {animation-delay: 0s}
+#home-slideshow-container > *:nth-child(2) {animation-delay: 7s}
+#home-slideshow-container > *:nth-child(3) {animation-delay: 14s}
+#home-slideshow-container > *:nth-child(4) {animation-delay: 21s}
+
+/* Below are the css rules for the footer/playbar  */
 .home-footer {
   flex: 0 0 auto;
   left: 0px;
