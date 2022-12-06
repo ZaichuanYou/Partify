@@ -180,32 +180,32 @@
             </div>
             <div class="header-header-boarder">
               <img
-                alt="image"
+                alt="wave-image"
                 src="../static/Images/sound-1781570.svg"
                 class="header-wave-img1"
               />
               <img
-                alt="image"
+                alt="wave-image"
                 src="../static/Images/sound-1781570.svg"
                 class="header-wave-img2"
               />
               <img
-                alt="image"
+                alt="wave-image"
                 src="../static/Images/sound-1781570.svg"
                 class="header-wave-img3"
               />
               <img
-                alt="image"
+                alt="wave-image"
                 src="../static/Images/sound-1781570.svg"
                 class="header-wave-img4"
               />
               <img
-                alt="image"
+                alt="wave-image"
                 src="../static/Images/sound-1781570.svg"
                 class="header-wave-img5"
               />
               <img
-                alt="image"
+                alt="wave-image"
                 src="../static/Images/sound-1781570.svg"
                 class="header-wave-img6"
               />
@@ -255,7 +255,7 @@
             <div class="group-members-title">
               <span class="group-members-title-text">Group Members</span>
             </div>
-            <div class="group-group-playlist">
+            <div class="group-playlist">
               <ul>
                 {% for song in songsInPlaylist %}
                   <li>{{ song['name'] }}</li>
@@ -263,27 +263,13 @@
                 {% endfor %}
               </ul>
             </div>
-            <div class="group-group-members-title">
-              <input
-                type="text"
-                placeholder="Search "
-                class="group-group-search-input input"
-              />
-              <span class="group-group-members-title-text">Group Members</span>
+            <div class="group-members-title">
+              <span class="group-members-title-text">Group Members</span>
             </div>
-            <div class="group-group-playlist-title">
-              <span class="group-group-playlist-title-text">
+            <div class="group-playlist-title">
+              <span class="group-playlist-title-text">
                 Group Playlist
               </span>
-              <div class="group-recommend-container">
-                <button class="group-recommend-button button">
-                  <span class="group-recommend-text">
-                    <span>Recommend Me A Song&nbsp;</span>
-                    <br />
-                    <br />
-                  </span>
-                </button>
-              </div>
               <input
                 type="text"
                 placeholder="Search Playlist"
@@ -312,7 +298,7 @@
                 <input
                   type="text"
                   placeholder="Search "
-                  class="group-group-search-input1 input"
+                  class="group-search-input1 input"
                   id = "newSongName"
                   onkeyup = "getSongsFromKey()"
                 />
