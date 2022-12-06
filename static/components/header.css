@@ -63,7 +63,7 @@
 .header-site-nav-text {
   top: 16px;
   left: 21px;
-  color: var(--dl-color-gray-black);
+  color: black;
   position: absolute;
   font-size: 1em;
   font-style: normal;
@@ -354,6 +354,10 @@
   position: absolute;
   box-shadow: 5px 5px 10px 0px #3e3939;
   align-items: flex-start;
+  background-color: #989191;
+}
+.header-spotify-login:hover {
+  background-color: white;
 }
 .header-login-button {
   top: 0px;
@@ -368,7 +372,9 @@
   border-radius: var(--dl-radius-radius-radius4);
   flex-direction: row;
   text-decoration: none;
-  background-color: #989191;
+  background-color: transparent;
+  color: black;
+  font-weight: 500;
 }
 .header-login-button-text {
   width: 100%;
