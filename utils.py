@@ -197,6 +197,10 @@ def recommend(Auth):
         result_list.append(drop_Feature(track))
     return result_list
 
+def get_song(Auth, id):
+    result = Auth.track(id)
+    return drop_Feature(result)
+
 def get_partify(Auth):
     playlist_id = ""
     playlists_u = Auth.user_playlists(user=get_user_id(Auth))['items']

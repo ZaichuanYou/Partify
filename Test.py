@@ -59,7 +59,7 @@ sp = utils.getAuth(token)
 playlist_id = utils.get_partify(sp)
 
 # songs = utils.get_song_In_Playlist(playlist_id, sp)
-# song_id = utils.get_songid_by_name(sp, "Dream On")
+song_id = utils.get_songid_by_name(sp, "Dream On")
 # utils.remove_song_from_playlist(sp, song_id)
 
 # recomend_machine = rediction_classifier()
@@ -69,4 +69,5 @@ playlist_id = utils.get_partify(sp)
 
 # recomend_machine.classifier_selection(stat[:-2])
 # print(recomend_machine.predict(stat[-1], stat, 5))
-print(utils.recommend(sp))
+# print(utils.recommend(sp))
+print(utils.get_song(sp, song_id))
