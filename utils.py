@@ -7,6 +7,8 @@ import pandas as pd
 import pyqrcode
 from pyqrcode import QRCode
 import json
+import numpy as np
+from Tianyi import rediction_classifier
 
 def getToken(username, scope):
     token = util.prompt_for_user_token(username,scope=scope,client_id='2c33c1c77b5346438eae177739954110',client_secret='5fd21bbeef534e91ab441448b96493ee', redirect_uri="http://localhost:8888/callback/")
@@ -93,22 +95,27 @@ def get_user_playlist_stat(playlists, Auth):
     track_uri = []
     for a in playlists_uri:
         track_uri.append(get_SongURI_In_Playlist(a, Auth))
+    track_uri = np.array(track_uri)
 
 
-    song_stat = pd.DataFrame(columns=list(Auth.audio_features(track_uri[0])[0].keys()))
-    temp = Auth.audio_features(track_uri[0])[0]
-    print(temp)
-    song_stat = pd.concat([pd.DataFrame(temp, index=[0]), song_stat], axis = 0, ignore_index=True)
+    stats = []
 
     for uri in track_uri:
-        song_stat = pd.concat([song_stat, pd.DataFrame(Auth.audio_features(uri)[0], index=[0])], axis=0, ignore_index=True)
+        song_stat = pd.DataFrame(columns=list(Auth.audio_features(uri)[0].keys()))
+        temp = Auth.audio_features(uri[0])[0]
+        song_stat = pd.concat([pd.DataFrame(temp, index=[0]), song_stat], axis = 0, ignore_index=True)
+        for song in uri:
+            song_stat = pd.concat([song_stat, pd.DataFrame(Auth.audio_features(song)[0], index=[0])], axis=0, ignore_index=True)
+        stats.append(song_stat)
 
-    song_stat.drop('track_href', axis=1, inplace=True)
-    song_stat.drop('uri', axis=1, inplace=True)
-    song_stat.drop('id', axis=1, inplace=True)
-    song_stat.drop('type', axis=1, inplace=True)
-    song_stat.drop('analysis_url', axis=1, inplace=True)
-    return song_stat
+
+    for song_stat in stats:
+        song_stat.drop('track_href', axis=1, inplace=True)
+        song_stat.drop('id', axis=1, inplace=True)
+        song_stat.drop('type', axis=1, inplace=True)
+        song_stat.drop('analysis_url', axis=1, inplace=True)
+
+    return np.array(stats)
 
 
 def drop_Feature(song_Feature):
@@ -172,6 +179,31 @@ def delete_user_playlist(Auth):
         if playlist["name"] == "Partify":
             playlist_id = playlist["id"]
     Auth.user_playlist_unfollow(get_user_id(Auth), playlist_id)
+
+def recommend(Auth):
+    """
+    Return a list of songs
+    """
+    recomend_machine = rediction_classifier()
+    playlists_u = Auth.user_playlists(user=get_user_id(Auth))
+    stat = get_user_playlist_stat(playlists_u, Auth)
+
+
+    recomend_machine.classifier_selection(stat[:-2])
+    uris = recomend_machine.predict(stat[-1], stat, 5)
+    result = Auth.tracks(uris)["tracks"]
+    result_list = []
+    for track in result:
+        result_list.append(drop_Feature(track))
+    return result_list
+
+def get_partify(Auth):
+    playlist_id = ""
+    playlists_u = Auth.user_playlists(user=get_user_id(Auth))['items']
+    for playlist in playlists_u:
+        if playlist["name"] == "Partify":
+            playlist_id = playlist["id"]
+    return playlist_id
 
 def createQRcode(url):
     qrCode = pyqrcode.create(url)
