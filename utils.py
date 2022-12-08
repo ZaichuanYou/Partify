@@ -194,7 +194,7 @@ def recommend(Auth):
         uris = recomend_machine.predict(stat[-1], stat, 5)
     except:
         uris=[]
-        for list in stat:
+        for list in stat[1:]:
             for uri in list["uri"]:
                 if not uri in uris and len(uris)<6:
                     uris.append(uri)
