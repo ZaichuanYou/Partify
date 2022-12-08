@@ -83,6 +83,10 @@ def groupPage():
             # songsRecommended = songsRecommended
             )
 
+@app.route('/qrcode')
+def getQRcode():
+    utils.createQRcode(url_for('groupPage'))
+    return 'get QR code successfully'
 
 @app.route('/recommend')
 def getRecommendedSong():
@@ -91,10 +95,10 @@ def getRecommendedSong():
     if not authorized:
         return redirect('/')
     Auth = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
-    if 'recommendation' not in session:
-        session['recommendation'] = utils.recommend(Auth)
-    recommendation = session['recommendation']
-    return str(recommendation)
+    # if 'recommendation' not in session:
+    #     session['recommendation'] = utils.recommend(Auth)
+    # recommendation = session['recommendation']
+    return str(utils.recommend(Auth))
 
 @app.route('/track')
 def getTrack():

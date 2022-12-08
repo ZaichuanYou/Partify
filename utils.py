@@ -196,7 +196,7 @@ def recommend(Auth):
         recomend_machine.classifier_selection(stat[:-2])
         uris = recomend_machine.predict(stat[-1], stat, 5)
     except:
-        uris=stat[0]["uri"][:5]
+        uris=stat[-1]["uri"][:5]
     result = Auth.tracks(uris)["tracks"]
     result_list = []
     for track in result:
