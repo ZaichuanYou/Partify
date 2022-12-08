@@ -596,6 +596,7 @@ html, body {
   border-radius: var(--dl-radius-radius-radius8);
   margin-bottom: 0em;
   background-color: #31314e94;
+  overflow: scroll;
 }
 .group-members-title {
   top: 900px;
@@ -884,6 +885,7 @@ html, body {
   position: absolute;
   align-items: flex-start;
   margin-left: 5em;
+  overflow: scroll;
 }
 .group-songs-title {
   top: 263px;

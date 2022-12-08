@@ -321,18 +321,22 @@
                 </button>
               </div>
               <!--Sections for the individual recommendation results-->
-              <div class="group-recommendations-results">
-                <div id="group-recommended-song"></div>
-                <button id="group-add-recommend-song-button">Add Song</button>
-                <div id="group-recommended-song2"></div>
+              <!-- <div class="group-recommendations-results">
+                {% for song in songsRecommended %}
+                  <div id="group-recommended-song">
+                    {{song.name}}
+                  </div>
+                  <button id="group-add-recommend-song-button">Add Song</button>
+                {% endfor %} -->
+                <!-- <div id="group-recommended-song2"></div>
                 <button id="group-add-recommend-song-button2">Add Song</button>
                 <div id="group-recommended-song3"></div>
                 <button id="group-add-recommend-song-button3">Add Song</button>
                 <div id="group-recommended-song4"></div>
                 <button id="group-add-recommend-song-button4">Add Song</button>
                 <div id="group-recommended-song5"></div>
-                <button id="group-add-recommend-song-button5">Add Song</button>
-              </div>  
+                <button id="group-add-recommend-song-button5">Add Song</button> -->
+              <!-- </div>   -->
             </div>
            </div>
            <!--Containers for the footer/playbar-->
@@ -434,16 +438,16 @@
           success: function(songInfo) {
             const allSongsInPlaylist = document.getElementById('allSongsInPlaylist');
             const nodeEachSong = document.createElement('div')
-            var songId = '0'
+            var songId = songInfo['id']
             nodeEachSong.id = songId
             const node = document.createElement("li");
-            const textnode = document.createTextNode(songInfo);
+            const textnode = document.createTextNode(songInfo['name']);
             node.appendChild(textnode);
             const nodeDelete = document.createElement('div')
             nodeDelete.innerHTML = `<form method="POST"><button class="button" type="button" onclick=deleteSong("${songId}")>Delete</button></form>`;
             nodeEachSong.appendChild(node);
             nodeEachSong.appendChild(nodeDelete)
-            allSongsInPlaylist.appendChild(nodeEachSong)
+            allSongsInPlaylist.prepend(nodeEachSong)
           }
         })
       }

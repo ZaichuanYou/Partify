@@ -205,9 +205,11 @@
             <div class="user-group-members">
               <ul class="user-group-member-list list">
                 {% for name in playlistNames %}
-                <li class="user-list-item list-item">
-                  <a href="" class="button"><span class="user-name">{{ name }}</span></a>
-                </li>
+                  {% if name != "Partify" %}
+                  <li class="user-list-item list-item">
+                    <a href="" class="button"><span class="user-name">{{ name }}</span></a>
+                  </li>
+                  {% endif %}
                 {% endfor %}
               </ul>
             </div>
@@ -229,10 +231,8 @@
             <div class="user-group-playlists">
               <ul class="user-group-p-laylists-list list">
                 <li class="user-list-item1 list-item">
-                  <span class="user-name1">Example Name</span>
+                  <a href="" class="button"><span class="user-name">Partify</span></a>
                 </li>
-                <li class="user-li2 list-item"><span>Example Name</span></li>
-                <li class="user-li3 list-item"><span>Example Name</span></li>
               </ul>
             </div>
           </div>

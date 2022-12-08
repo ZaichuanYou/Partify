@@ -64,7 +64,8 @@ def groupPage():
     if request.method == 'POST' and 'songIdAdd' in request.form:
         songIdAdd = request.form.get('songIdAdd')
         utils.add_song_to_playlist(Auth, songIdAdd)
-        return 'this is a song name'
+        songInfo = utils.get_song(Auth, songIdAdd)
+        return songInfo
     if request.method == 'POST' and 'songIdDelete' in request.form:
         songIdDelete = request.form.get('songIdDelete')
         utils.remove_song_from_playlist(Auth, songIdDelete)
@@ -72,10 +73,28 @@ def groupPage():
     else:
         playlistId = request.args['playlist']
         songsInPlaylist = utils.get_song_In_Playlist(playlistId, Auth)
+        # if 'recommendation' not in session:
+        #     session['recommendation'] = utils.recommend(Auth)
+        # songsRecommended = session['recommendation']
+        # qrCode = utils.createQRcode(url_for('groupPage'))
         return render_template(
             'group.html',
-            songsInPlaylist = songsInPlaylist
+            songsInPlaylist = songsInPlaylist,
+            # songsRecommended = songsRecommended
             )
+
+
+@app.route('/recommend')
+def getRecommendedSong():
+    session['token_info'], authorized = get_token()
+    session.modified = True
+    if not authorized:
+        return redirect('/')
+    Auth = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
+    if 'recommendation' not in session:
+        session['recommendation'] = utils.recommend(Auth)
+    recommendation = session['recommendation']
+    return str(recommendation)
 
 @app.route('/track')
 def getTrack():
