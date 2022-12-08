@@ -65,6 +65,9 @@ def get_user_playlist(Auth):
     
     return result
 
+def getTrack(Auth, trackId):
+    return Auth.tracks(trackId)
+
 def get_songid_by_name(Auth, name):
     playlist_id = ""
     playlists_u = Auth.user_playlists(user=get_user_id(Auth))['items']
@@ -175,7 +178,6 @@ def delete_user_playlist(Auth):
 
 def createQRcode(url):
     qrCode = pyqrcode.create(url)
-  
     # Create and save the svg file naming "myqr.svg"
     qrCode.svg("myqr.svg", scale = 8)
     

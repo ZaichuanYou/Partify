@@ -57,10 +57,18 @@ def groupPage():
     if not authorized:
         return redirect('/')
     Auth = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
-    if request.method == 'POST':
+    if request.method == 'POST' and 'newSongName' in request.form:
         inputSearch = request.form.get('newSongName')
         songs = utils.search_song(inputSearch, Auth)
         return jsonify(songs)
+    if request.method == 'POST' and 'songIdAdd' in request.form:
+        songIdAdd = request.form.get('songIdAdd')
+        utils.add_song_to_playlist(Auth, songIdAdd)
+        return 'this is a song name'
+    if request.method == 'POST' and 'songIdDelete' in request.form:
+        songIdDelete = request.form.get('songIdDelete')
+        utils.remove_song_from_playlist(Auth, songIdDelete)
+        return songIdDelete
     else:
         playlistId = request.args['playlist']
         songsInPlaylist = utils.get_song_In_Playlist(playlistId, Auth)
@@ -69,6 +77,16 @@ def groupPage():
             songsInPlaylist = songsInPlaylist
             )
 
+@app.route('/track')
+def getTrack():
+    session['token_info'], authorized = get_token()
+    session.modified = True
+    if not authorized:
+        return redirect('/')
+    Auth = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
+    id = request.args['trackId']
+    return utils.getTrack(Auth, id)
+
 @app.route('/returnSongsInPlaylist')
 def getAllSongs():
     session['token_info'], authorized = get_token()
@@ -76,7 +94,6 @@ def getAllSongs():
     if not authorized:
         return redirect('/')
     Auth = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
-    utils.create_user_playlist(Auth)
     utils.add_song_to_playlist(Auth, "5xwBIieMMFUmLDgvG4DjFe")
     # return utils.get_song_In_Playlist("3io6HS2WQqDybZ825bY41T", Auth)
     return 'ok'
@@ -130,7 +147,6 @@ def get_token():
         token_info = sp_oauth.refresh_access_token(session.get('token_info').get('refresh_token'))
 
     token_valid = True
-    print(session.get("token_info"))
     return token_info, token_valid
 
 @app.route('/logout')
