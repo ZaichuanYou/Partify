@@ -22,14 +22,17 @@ class rediction_classifier():
         self.classifiers = []
         
 
-        for df in data:
+        for df in range(0, len(data)):
             #print(df.head())
-            df = df.drop('uri', axis=1)
-            df = df.astype(float)
-            array = np.array(df)
+
+            subset = data[df].drop('uri', axis=1)
+            subset = subset.astype(float)
+            array = np.array(subset)
             models = []
-            df = self.cleandata(df)
-            array = np.array(df)
+            subset = self.cleandata(subset)
+            negative = self.generate_negative(data, df)
+            subset = pd.concat([subset, negative], ignore_index=True)
+            array = np.array(subset)
 
             X = array[:, :-1]
             Y = array[:, -1]
@@ -101,7 +104,21 @@ class rediction_classifier():
         new_df = data[filtered_entries]  # we now have deleted the outliers in our data
         dropped_entries = (abs_z_scores >= 3).any(axis=1)
         dropped = data[dropped_entries]
-        dropped['label'] = 0
+        dropped['label'] = -1
         new_df['label'] = 1
         dataframe = pd.concat([new_df, dropped], ignore_index=True)
         return dataframe
+    
+    def generate_negative(self, data, current):
+        result = []
+        for df in range(0, len(data)):
+            if df == current:
+                continue
+            new_set = data[df]
+            new_set['label'] = -1
+            result.append(new_set)
+        result_df = result[0]
+        for set in range(1, len(result)):
+            result_df = pd.concat([result_df, result[set]], ignore_index=True)
+        return result_df
+
