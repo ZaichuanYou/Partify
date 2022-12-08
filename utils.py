@@ -209,14 +209,12 @@ def get_partify(Auth):
             playlist_id = playlist["id"]
     return playlist_id
 
+def user_follow(Auth, playlist_id):
+    Auth.user_playlist_follow_playlist(get_user_id(Auth, playlist_id))
+
 def createQRcode(url):
     qrCode = pyqrcode.create(url)
-  
-    # Create and save the svg file naming "myqr.svg"
-    qrCode.svg("myqr.svg", scale = 8)
-    
-    # Create and save the png file naming "myqr.png"
-    qrCode.png('myqr.png', scale = 6)
+    qrCode.png("Partify.png")
 
 def encodeJson(dict):
     encoded = json.dumps(dict)
