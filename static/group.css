@@ -16,6 +16,8 @@
   height: 78px;
   position: absolute;
   object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid black;
 }
 .header-site-nav-area {
   top: 19px;
@@ -634,7 +636,7 @@ html, body {
   top: 17px;
   color: rgba(51, 23, 66, 0.95);
   height: 50%;
-  width: 80%;
+  width: 40%;
   padding-top: 2%;
   position: absolute;
   font-size: 1.5em;
