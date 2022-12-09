@@ -251,10 +251,6 @@
                 </tr>
               </table>
             </div>
-            <div class="group-playlist"></div>
-            <div class="group-members-title">
-              <span class="group-members-title-text">Group Members</span>
-            </div>
             <div class="group-playlist">
               <ul id="allSongsInPlaylist">
                 {% for song in songsInPlaylist %}
@@ -276,13 +272,17 @@
               </span>
               <input
                 type="text"
-                placeholder="Search Playlist"
+                placeholder="Search playlist"
                 class="group-textinput input"
               />
             </div>
             <!--Containers for the QR code-->
             <div class="group-q-r-code">
-              <img src="../static/Partify.png">
+              <img
+                alt="QR-code"
+              img src="../static/Images/QR-Partify.png"
+              class="QR-code"
+              />
             </div>
             <div class="group-q-r-code-text-container">
               <span class="group-q-r-code-text">
@@ -303,7 +303,7 @@
               <form method="post">
                 <input
                   type="text"
-                  placeholder="Search "
+                  placeholder="Search for new songs "
                   class="group-search-input1 input"
                   id = "newSongName"
                   onkeyup = "getSongsFromKey()"
