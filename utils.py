@@ -221,11 +221,11 @@ def get_partify(Auth):
     return playlist_id
 
 def user_follow(Auth, playlist_id):
-    Auth.user_playlist_follow_playlist(get_user_id(Auth, playlist_id))
+    Auth.user_playlist_follow_playlist(get_user_id(Auth), playlist_id)
 
 def createQRcode(url):
     qrCode = pyqrcode.create(url)
-    qrCode.png("Partify.png")
+    qrCode.png("Partify.png", scale=10)
 
 def encodeJson(dict):
     encoded = json.dumps(dict)

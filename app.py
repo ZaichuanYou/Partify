@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, session, url_for, jsonify
+from os import path
 import utils
 import time
 import spotipy
@@ -73,18 +74,20 @@ def groupPage():
     else:
         playlistId = request.args['playlist']
         songsInPlaylist = utils.get_song_In_Playlist(playlistId, Auth)
-        # if 'recommendation' not in session:
-        #     session['recommendation'] = utils.recommend(Auth)
-        # songsRecommended = session['recommendation']
+        # utils.user_follow(Auth, playlistId)
+        if 'recommendation' not in session:
+            session['recommendation'] = utils.recommend(Auth)
+        songsRecommended = session['recommendation']
         # qrCode = utils.createQRcode(url_for('groupPage'))
         return render_template(
             'group.html',
             songsInPlaylist = songsInPlaylist,
-            # songsRecommended = songsRecommended
+            songsRecommended = songsRecommended
             )
 
 @app.route('/qrcode')
 def getQRcode():
+    # return str(path.exists('Partify.png'))
     utils.createQRcode(url_for('groupPage'))
     return 'get QR code successfully'
 
@@ -117,9 +120,9 @@ def getAllSongs():
     if not authorized:
         return redirect('/')
     Auth = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
-    utils.add_song_to_playlist(Auth, "5xwBIieMMFUmLDgvG4DjFe")
-    # return utils.get_song_In_Playlist("3io6HS2WQqDybZ825bY41T", Auth)
-    return 'ok'
+    # utils.add_song_to_playlist(Auth, "5xwBIieMMFUmLDgvG4DjFe")
+    return str(utils.get_song_In_Playlist("3io6HS2WQqDybZ825bY41T", Auth))
+    # return 'ok'
 
 @app.route('/createPlaylists')
 def createPlaylist():

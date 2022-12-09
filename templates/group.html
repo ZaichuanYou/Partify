@@ -259,7 +259,7 @@
               <ul id="allSongsInPlaylist">
                 {% for song in songsInPlaylist %}
                   <div id="{{song.id}}">
-                    <li>{{ song['name'] }}</li>
+                    <a type="button" onclick="play('{{song.preview_url}}')">{{ song['name'] }}</a>
                     <div>
                       <form method="POST"><button class="button" type="button" onclick='deleteSong("{{song.id}}")'>Delete</button></form>
                     </div>
@@ -281,7 +281,9 @@
               />
             </div>
             <!--Containers for the QR code-->
-            <div class="group-q-r-code"></div>
+            <div class="group-q-r-code">
+              <img src="../static/Partify.png">
+            </div>
             <div class="group-q-r-code-text-container">
               <span class="group-q-r-code-text">
                 Scan this using your phone's camera to invite others !
@@ -321,28 +323,24 @@
                 </button>
               </div>
               <!--Sections for the individual recommendation results-->
-              <!-- <div class="group-recommendations-results">
+              <div class="group-recommendations-results">
                 {% for song in songsRecommended %}
-                  <div id="group-recommended-song">
-                    {{song.name}}
+                  <div>
+                    <div id="group-recommended-song">
+                      {{song.name}}
+                    </div>
+                    <form method="POST">
+                      <button id="group-add-recommend-song-button" class="button" type="button" onclick='addToPlaylist("{{song.id}}")'>Add Song</button>
+                    </form>
                   </div>
-                  <button id="group-add-recommend-song-button">Add Song</button>
-                {% endfor %} -->
-                <!-- <div id="group-recommended-song2"></div>
-                <button id="group-add-recommend-song-button2">Add Song</button>
-                <div id="group-recommended-song3"></div>
-                <button id="group-add-recommend-song-button3">Add Song</button>
-                <div id="group-recommended-song4"></div>
-                <button id="group-add-recommend-song-button4">Add Song</button>
-                <div id="group-recommended-song5"></div>
-                <button id="group-add-recommend-song-button5">Add Song</button> -->
-              <!-- </div>   -->
+                {% endfor %}
+              </div>  
             </div>
            </div>
            <!--Containers for the footer/playbar-->
           <footer class="group-footer">
             <div class="play-bar-container play-bar-root-class-name">
-              <div class="play-bar-next-button-container">
+              <!-- <div class="play-bar-next-button-container">
                 <button class="play-bar-next-button button">
                   <svg
                     viewBox="0 0 585.1428571428571 1024"
@@ -377,8 +375,11 @@
                     ></path>
                   </svg>
                 </button>
-              </div>
+              </div> -->
+              <audio id="audioSource" controls>
+              </audio>
             </div>
+            
             <a href="#Header" class="group-link">
               <div class="home-button-container home-button-root-class-name6">
                 <div class="home-button-home-button-container">
@@ -414,13 +415,14 @@
           },
           success: function(songResults) {
             for (var key in songResults) {
-              const node = document.createElement("li");
+              const node = document.createElement("a");
               const textnode = document.createTextNode(songResults[key]['name']);
+              node.appendChild(textnode);
+              node.setAttribute('onclick', 'play(songResults.preview)')
               const nodeAdd = document.createElement('div')
               // nodeAdd.className = 'button'
               var songId = songResults[key]['id']
-              nodeAdd.innerHTML = `<form method="POST"><button name="data" class="button" type="button" onclick=addToPlaylist("${songId}")>Add</button></form>`;
-              node.appendChild(textnode);
+              nodeAdd.innerHTML = `<form method="POST"><button name="data" class="button" type="button" onclick=addToPlaylist("${songId}")>Add Song</button></form>`;
               listOfSongs.appendChild(node);
               listOfSongs.appendChild(nodeAdd)
             }
@@ -464,6 +466,11 @@
             nodeToRemove.remove()
           }
         })
+      }
+
+      function play(preview) {
+        const audioSource = document.getElementById('audioPreview')
+        audioSource.setAttribute('src', preview)
       }
       </script>
   </body>
