@@ -45,10 +45,12 @@ def getUserProfile():
     #     return(track['name'] + ' - ' + track['artists'][0]['name'])
     profile = utils.get_user_profile(Auth)
     playlists = utils.get_user_playlist(Auth)
+    partifyId = utils.getPartifyPlaylistId(Auth)
     return render_template(
         'user.html',
         username = profile['display_name'],
         playlistNames = list(playlists.keys()),
+        partifyId = partifyId
         )
 
 @app.route('/groupPage', methods=['GET', 'POST'])
@@ -58,6 +60,7 @@ def groupPage():
     if not authorized:
         return redirect('/')
     Auth = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
+    partifyId = utils.getPartifyPlaylistId(Auth)
     if request.method == 'POST' and 'newSongName' in request.form:
         inputSearch = request.form.get('newSongName')
         songs = utils.search_song(inputSearch, Auth)
@@ -82,8 +85,19 @@ def groupPage():
         return render_template(
             'group.html',
             songsInPlaylist = songsInPlaylist,
-            songsRecommended = songsRecommended
+            songsRecommended = songsRecommended, 
+            partifyId = partifyId
             )
+
+@app.route('/about')
+def getAbout():
+    session['token_info'], authorized = get_token()
+    session.modified = True
+    if not authorized:
+        return redirect('/')
+    Auth = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
+    partifyId = utils.getPartifyPlaylistId(Auth)
+    return render_template('about.html', partifyId = partifyId)
 
 @app.route('/qrcode')
 def getQRcode():
@@ -111,7 +125,7 @@ def getTrack():
         return redirect('/')
     Auth = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
     id = request.args['trackId']
-    return utils.getTrack(Auth, id)
+    return utils.get_song(Auth, id)
 
 @app.route('/returnSongsInPlaylist')
 def getAllSongs():

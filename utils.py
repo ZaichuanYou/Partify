@@ -183,6 +183,14 @@ def delete_user_playlist(Auth):
             playlist_id = playlist["id"]
     Auth.user_playlist_unfollow(get_user_id(Auth), playlist_id)
 
+def getPartifyPlaylistId(Auth):
+    playlist_id = ""
+    playlists_u = Auth.user_playlists(user=get_user_id(Auth))['items']
+    for playlist in playlists_u:
+        if playlist["name"] == "Partify":
+            playlist_id = playlist["id"]
+    return playlist_id
+
 def recommend(Auth):
     """
     Return a list of songs

@@ -90,7 +90,7 @@
                     </a>
                   </div>
                 </li>
-                <li data-thq="thq-dropdown" class="header-dropdown2 list-item">
+                <!-- <li data-thq="thq-dropdown" class="header-dropdown2 list-item">
                   <div
                     data-thq="thq-dropdown-toggle"
                     class="header-dropdown-toggle2"
@@ -105,12 +105,12 @@
                     data-thq="thq-dropdown-toggle"
                     class="header-dropdown-toggle3"
                   >
-                    <a href="group.html" class="header-group-button button">
+                    <a href="{{ url_for('groupPage', playlist = partifyId) }}" class="header-group-button button">
                       <span>Group</span>
                     </a>
                   </div>
-                </li>
-                <li data-thq="thq-dropdown" class="header-dropdown4 list-item">
+                </li> -->
+                <!-- <li data-thq="thq-dropdown" class="header-dropdown4 list-item">
                   <div
                     data-thq="thq-dropdown-toggle"
                     class="header-dropdown-toggle4"
@@ -119,13 +119,13 @@
                       <span>Data</span>
                     </a>
                   </div>
-                </li>
+                </li> -->
                 <li data-thq="thq-dropdown" class="header-dropdown5 list-item">
                   <div
                     data-thq="thq-dropdown-toggle"
                     class="header-dropdown-toggle5"
                   >
-                    <a href="about.html" class="header-about-button button">
+                    <a href="{{ url_for('getAbout') }}" class="header-about-button button">
                       <span>About</span>
                     </a>
                   </div>

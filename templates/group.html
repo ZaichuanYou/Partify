@@ -115,7 +115,7 @@
                       data-thq="thq-dropdown-toggle"
                       class="header-dropdown-toggle1"
                     >
-                      <a href="index.html" class="header-home-button button">
+                      <a href="{{ url_for('home') }}" class="header-home-button button">
                         <span>Home</span>
                       </a>
                     </div>
@@ -128,7 +128,7 @@
                       data-thq="thq-dropdown-toggle"
                       class="header-dropdown-toggle2"
                     >
-                      <a href="user.html" class="header-user-button button">
+                      <a href="{{ url_for('getUserProfile') }}" class="header-user-button button">
                         <span>User</span>
                       </a>
                     </div>
@@ -141,12 +141,12 @@
                       data-thq="thq-dropdown-toggle"
                       class="header-dropdown-toggle3"
                     >
-                      <a href="group.html" class="header-group-button button">
+                      <a href="{{ url_for('groupPage', playlist = partifyId) }}" class="header-group-button button">
                         <span>Group</span>
                       </a>
                     </div>
                   </li>
-                  <li
+                  <!-- <li
                     data-thq="thq-dropdown"
                     class="header-dropdown4 list-item"
                   >
@@ -158,7 +158,7 @@
                         <span>Data</span>
                       </a>
                     </div>
-                  </li>
+                  </li> -->
                   <li
                     data-thq="thq-dropdown"
                     class="header-dropdown5 list-item"
@@ -167,7 +167,7 @@
                       data-thq="thq-dropdown-toggle"
                       class="header-dropdown-toggle5"
                     >
-                      <a href="about.html" class="header-about-button button">
+                      <a href="{{ url_for('getAbout') }}" class="header-about-button button">
                         <span>About</span>
                       </a>
                     </div>
@@ -212,14 +212,14 @@
             </div>
             <div class="header-spotify-login">
               <a
-                href="https://www.spotify.com/us/account/overview/"
+                href="{{ url_for('logout') }}"
                 target="_blank"
                 rel="noreferrer noopener"
                 class="header-login-button button"
               >
                 <span class="header-login-button-text">
                   <br />
-                  <span>Login</span>
+                  <span>Log out</span>
                 </span>
               </a>
             </div>
@@ -255,7 +255,7 @@
               <ul id="allSongsInPlaylist">
                 {% for song in songsInPlaylist %}
                   <div id="{{song.id}}">
-                    <a type="button" onclick="play('{{song.preview_url}}')">{{ song['name'] }}</a>
+                    <button style="cursor:pointer;" type="button" onclick="play('{{song.preview_url}}')">{{ song['name'] }}</button>
                     <div>
                       <form method="POST"><button class="button" type="button" onclick='deleteSong("{{song.id}}")'>Delete</button></form>
                     </div>
@@ -326,9 +326,9 @@
               <div class="group-recommendations-results">
                 {% for song in songsRecommended %}
                   <div>
-                    <div id="group-recommended-song">
+                    <button style="cursor:pointer;" type="button" onclick="play('{{song.preview}}')" id="group-recommended-song">
                       {{song.name}}
-                    </div>
+                    </button>
                     <form method="POST">
                       <button id="group-add-recommend-song-button" class="button" type="button" onclick='addToPlaylist("{{song.id}}")'>Add Song</button>
                     </form>
@@ -415,10 +415,12 @@
           },
           success: function(songResults) {
             for (var key in songResults) {
-              const node = document.createElement("a");
+              const node = document.createElement("button");
               const textnode = document.createTextNode(songResults[key]['name']);
               node.appendChild(textnode);
-              node.setAttribute('onclick', 'play(songResults.preview)')
+              node.setAttribute("type", "button")
+              node.setAttribute("style", "cursor:pointer;")
+              node.setAttribute("onclick", `play('${songResults[key].preview}')`)
               const nodeAdd = document.createElement('div')
               // nodeAdd.className = 'button'
               var songId = songResults[key]['id']
@@ -442,9 +444,12 @@
             const nodeEachSong = document.createElement('div')
             var songId = songInfo['id']
             nodeEachSong.id = songId
-            const node = document.createElement("li");
+            const node = document.createElement("button");
             const textnode = document.createTextNode(songInfo['name']);
             node.appendChild(textnode);
+            node.setAttribute("type", "button")
+            node.setAttribute("style", "cursor:pointer;")
+            node.setAttribute("onclick", `play('${songInfo.preview}')`)
             const nodeDelete = document.createElement('div')
             nodeDelete.innerHTML = `<form method="POST"><button class="button" type="button" onclick=deleteSong("${songId}")>Delete</button></form>`;
             nodeEachSong.appendChild(node);
@@ -469,8 +474,9 @@
       }
 
       function play(preview) {
-        const audioSource = document.getElementById('audioPreview')
+        const audioSource = document.getElementById('audioSource')
         audioSource.setAttribute('src', preview)
+        audioSource.play()
       }
       </script>
   </body>

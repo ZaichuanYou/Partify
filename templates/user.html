@@ -90,7 +90,7 @@
                       data-thq="thq-dropdown-toggle"
                       class="header-dropdown-toggle1"
                     >
-                      <a href="index.html" class="header-home-button button">
+                      <a href="{{ url_for('home') }}" class="header-home-button button">
                         <span>Home</span>
                       </a>
                     </div>
@@ -103,7 +103,7 @@
                       data-thq="thq-dropdown-toggle"
                       class="header-dropdown-toggle2"
                     >
-                      <a href="user.html" class="header-user-button button">
+                      <a href="{{ url_for('getUserProfile') }}" class="header-user-button button">
                         <span>User</span>
                       </a>
                     </div>
@@ -116,12 +116,12 @@
                       data-thq="thq-dropdown-toggle"
                       class="header-dropdown-toggle3"
                     >
-                      <a href="group.html" class="header-group-button button">
+                      <a href="{{ url_for('groupPage', playlist = partifyId) }}" class="header-group-button button">
                         <span>Group</span>
                       </a>
                     </div>
                   </li>
-                  <li
+                  <!-- <li
                     data-thq="thq-dropdown"
                     class="header-dropdown4 list-item"
                   >
@@ -133,7 +133,7 @@
                         <span>Data</span>
                       </a>
                     </div>
-                  </li>
+                  </li> -->
                   <li
                     data-thq="thq-dropdown"
                     class="header-dropdown5 list-item"
@@ -142,7 +142,7 @@
                       data-thq="thq-dropdown-toggle"
                       class="header-dropdown-toggle5"
                     >
-                      <a href="about.html" class="header-about-button button">
+                      <a href="{{ url_for('getAbout') }}" class="header-about-button button">
                         <span>About</span>
                       </a>
                     </div>
@@ -187,13 +187,13 @@
             </div>
             <div class="header-spotify-login">
               <a
-                href="https://www.spotify.com/us/account/overview/"
+                href="{{ url_for('logout') }}"
                 rel="noreferrer noopener"
                 class="header-login-button button"
               >
                 <span class="header-login-button-text">
                   <br />
-                  <span>Login</span>
+                  <span>Log out</span>
                 </span>
               </a>
             </div>
@@ -231,36 +231,13 @@
             <div class="user-group-playlists">
               <ul class="user-group-p-laylists-list list">
                 <li class="user-list-item1 list-item">
-                  <a href="" class="button"><span class="user-name">Partify</span></a>
+                  <a href="{{ url_for('groupPage', playlist = partifyId) }}" class="button"><span class="user-name">Partify</span></a>
                 </li>
               </ul>
             </div>
           </div>
           <!--Containers for the recommendations-->
-          <div class="user-recommendations">
-            <div class="user-recommend-container">
-              <button class="user-recommend-button button">
-                <span class="user-recommend-text">
-                  <span>Recommend Me A Song </span>
-                  <br />
-                  <br />
-                </span>
-              </button>
-            </div>
-            <!--Sections for the individual recommendation results-->
-            <div class="user-recommendations-results">
-              <div id="user-recommended-song"></div>
-              <button id="user-add-recommend-song-button">Add Song</button>
-              <div id="user-recommended-song2"></div>
-              <button id="user-add-recommend-song-button2">Add Song</button>
-              <div id="user-recommended-song3"></div>
-              <button id="user-add-recommend-song-button3">Add Song</button>
-              <div id="user-recommended-song4"></div>
-              <button id="user-add-recommend-song-button4">Add Song</button>
-              <div id="user-recommended-song5"></div>
-              <button id="user-add-recommend-song-button5">Add Song</button>
-            </div>  
-          </div>
+          
           <footer class="user-footer">
             <div class="play-bar-container play-bar-root-class-name4">
               <div class="play-bar-next-button-container">
